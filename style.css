@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(21, 21, 21);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media (max-width: 1480px) {
+  #app {
+    max-width: 100%;
+  }
+  #app .wr-home {
+    padding: 0 30px;
+  }
+}
+
+header {
+  background-color: #000;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logotip-wrap {
+  flex-basis: 240px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+header .logotip img {
+  object-fit: contain;
+  width: 70px;
+  height: 70px;
+}
+header .interface {
+  display: flex;
+}
+header .interface nav {
+  display: flex;
+  gap: 20px;
+}
+header .interface nav a {
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  margin-right: 25px;
+  text-decoration: none;
+  transition: 0.3s color;
+}
+header .interface nav a:hover {
+  color: #3498db;
+}
+header .interface nav .underline {
+  text-decoration: underline;
+}
+header .interface form input[type=text] {
+  width: 300px;
+  background-color: inherit;
+  font-size: 25px;
+  border: none;
+  color: white;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-left: 150px;
+  margin-right: 10px;
+}
+header .interface form::placeholder {
+  color: white;
+  outline: none;
+}
+header .interface form input[type=submit] {
+  font-size: 25px;
+  color: white;
+  background-color: black;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+header .profile {
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px 20px;
+  display: inline-flex;
+  font-size: 14px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  transition: 0.3s background-color, 0.3s color;
+}
+header .profile:hover {
+  background: #fff;
+  color: #000;
+}
+
+.none {
+  display: none !important;
+}
+
+.err {
+  color: red;
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}

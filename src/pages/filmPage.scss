@@ -1,0 +1,86 @@
+.single-movie {
+  padding: 32px 20px;
+  color: #fff;
+  max-width: 1440px;
+  margin: auto;
+
+  h1 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+  }
+
+  .head-row {
+    display: flex;
+    gap: 1rem;
+    @media (max-width: 768px){
+      flex-direction: column;
+    }
+
+    img {
+      flex-basis: 340px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .caption {
+      .item {
+        margin-bottom: 10px;
+
+        span {
+          color: orange;
+          font-weight: bolder;
+        }
+      }
+      .content-wrap {
+        margin-bottom: 40px;
+      }
+      .content {
+        line-height: 1.5;
+        color: #ddd;
+        margin-bottom: 10px;
+
+        b {
+          color: #fff;
+        }
+      }
+
+    }
+  }
+
+}
+
+.similiar-movies {
+  max-width: 1440px;
+  margin: 1.5rem auto;
+  color: #fff;
+  padding: 0 20px;
+
+  h2 {
+    margin-bottom: 32px;
+  }
+}
+.single-movie-similiars {
+  padding: 0;
+  grid-template-columns: repeat(5, 1fr);
+  @media (max-width: 1480px) {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  @media (max-width: 1240px) {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  @media (max-width: 1240px) {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  .card {
+    .wp-img {
+      height: 280px;
+      img {
+        object-position: top;
+      }
+    }
+  }
+
+}

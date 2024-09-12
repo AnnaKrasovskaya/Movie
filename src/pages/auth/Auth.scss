@@ -1,0 +1,56 @@
+.wrapper-form {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  form {
+    width: 400px;
+    min-height: 550px;
+    background-color: rgba(0, 0, 0, 0.534);
+    border-radius: 20px;
+    padding: 30px;
+    h1 {
+      color: white;
+      margin-bottom: 130px;
+      text-align: centerxs;
+    }
+    input {
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.434);
+      outline: none;
+      width: 100%;
+      height: 40px;
+      font-size: 18px;
+      color: white;
+      border: none;
+    }
+    ::placeholder {
+      color: white;
+      font-size: 18px;
+    }
+    .wr_btn {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 120px;
+      #btnSend {
+        width: 70%;
+        height: 35px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+      }
+    }
+    a {
+      display: block;
+      width: 60%;
+      margin: 0 auto;
+      text-align: center;
+      color: yellow;
+      font-size: 25px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+  }
+}

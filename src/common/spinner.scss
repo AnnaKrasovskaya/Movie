@@ -1,0 +1,33 @@
+$spinner-size: 150px;
+$spinner-border: 10px;
+$spinner-color: #3498db;
+$spinner-animation-duration: 1s;
+
+.wrapper-spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .spinner {
+    width: $spinner-size;
+    height: $spinner-size;
+    border: $spinner-border solid transparent;
+    border-top: $spinner-border solid $spinner-color;
+    border-radius: 50%;
+    animation: spin $spinner-animation-duration linear infinite;
+  }
+  h2 {
+    color: white;
+    font-size: 25px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
