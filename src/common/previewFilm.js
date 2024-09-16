@@ -1,13 +1,5 @@
 export default function (film) {
-  const {
-    posterUrl,
-    premiereRu,
-    nameRu,
-    nameEn,
-    genres,
-    countries,
-    kinopoiskId,
-  } = film;
+  const { posterUrl, nameRu, kinopoiskId } = film;
 
   return `
   <div class = "search-film-preview">
@@ -16,5 +8,5 @@ export default function (film) {
     </a>
     <span class="name">${nameRu}</span>
   </div>
-  `
+  `;
 }

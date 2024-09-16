@@ -1,6 +1,6 @@
-import {app} from "../services/vars";
-import {exitProfileUser} from "./exitProfileUser";
-import logo from '../../assets/logo.png'
+import { app } from "../services/vars";
+import { exitProfileUser } from "./exitProfileUser";
+import logo from "../../assets/logo.png";
 
 export function header(paste, auth) {
   const template = `
@@ -18,14 +18,9 @@ export function header(paste, auth) {
     <div class="profile">Выйти</div>
   </header>`;
 
-
   if (paste) {
     app.insertAdjacentHTML("afterbegin", template);
-    const homeLink = document.getElementById("home-link");
-    const moviesLink = document.getElementById("movies-link");
-    const header = document.getElementById("header");
     const profile = document.querySelector(".profile");
-
     profile.addEventListener("click", () => exitProfileUser(auth));
   }
 }
