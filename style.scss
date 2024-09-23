@@ -9,10 +9,10 @@ body {
 }
 #app {
   @media (max-width: 1480px) {
-     max-width: 100%;
-     .wr-home {
-       padding: 0 30px;
-     }
+    max-width: 100%;
+    .wr-home {
+      padding: 0 30px;
+    }
   }
 }
 header {
@@ -47,12 +47,16 @@ header {
         cursor: pointer;
         margin-right: 25px;
         text-decoration: none;
-        transition: .3s color;
-        &:hover{ color: #3498db;
+        transition: 0.3s color;
+        &:hover {
+          color: #3498db;
         }
       }
       .underline {
         text-decoration: underline;
+      }
+      @media (max-width: 768px) {
+        display: none;
       }
     }
     form {
@@ -89,7 +93,7 @@ header {
     font-size: 14px;
     border: 1px solid #fff;
     cursor: pointer;
-    transition: .3s background-color, .3s color;
+    transition: 0.3s background-color, 0.3s color;
     &:hover {
       background: #fff;
       color: #000;
@@ -105,4 +109,90 @@ header {
   margin-bottom: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
+}
+#footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  background-color: #000;
+  margin-top: 32px;
+  justify-content: space-between;
+  gap: 32px;
+  .title {
+    font-weight: bolder;
+
+    color: #fff;
+    font-size: 14px;
+  }
+  nav {
+    display: flex;
+    gap: 32px;
+    color: #fff;
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+
+    a {
+      color: #ddd;
+      font-size: 14px;
+      line-height: 1.5;
+      text-decoration: none;
+    }
+  }
+  .grid-wrap {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.apps,
+.socials {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+.logotip-wrap {
+  img {
+    width: 120px;
+  }
+}
+.films__wrapper {
+  h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+    padding: 0 25px;
+  }
+}
+.films__wrapper {
+  margin: 20px 0;
+}
+#filter__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 10px 25px 20px;
+  .filter__item {
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 8px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s background-color, 0.3s color;
+    &:hover {
+      color: #222;
+      background-color: #fff;
+    }
+  }
+  .filter__item.active {
+    background:#fff;
+    color: #222;
+  }
 }

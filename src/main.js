@@ -3,11 +3,11 @@ import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {initializeApp} from "firebase/app";
 import homePage from "./pages/homePage";
 import registrPage from "./pages/auth/RegistrPage/RegistrPage";
-import moviesPage from "./pages/moviesPage";
+
 import errorPage from "./pages/errorPage";
 import filmPage from "./pages/filmPage";
 import loginPage from "./pages/auth/LoginPage/LoginPage";
-
+import filterPage from "./pages/filterPage"
 initializeApp(firebaseConfig);
 
 const auth = getAuth();
@@ -20,9 +20,6 @@ onAuthStateChanged(auth, (user) => {
     case "/":
       homePage(auth);
       break;
-    case "/movies":
-      moviesPage(auth);
-      break;
     case "/login":
       loginPage(auth);
       break;
@@ -31,6 +28,8 @@ onAuthStateChanged(auth, (user) => {
       break;
     case `/movies/${arr[2]}`:
       filmPage(auth, arr[2]);
+      break;
+    case `/filterby/${arr[2]}` : filterPage(auth, arr[2])
       break;
     default:
       errorPage();

@@ -1,19 +1,20 @@
-import {app} from "../services/vars";
-import {header} from "../common/header";
-import {spinner} from "../common/spinner";
+import { app } from "../services/vars";
+import { header } from "../common/header";
+import { spinner } from "../common/spinner";
 import kinopoisk from "../services/kinopoisk";
-import {cardFilm} from "../common/cardFilm";
+import { cardFilm } from "../common/cardFilm";
 import previewFilm from "../common/previewFilm.js";
 import "./homePage.scss";
-
+import { footer } from "../common/footer.js";
+import filters from "../common/filters.js";
 
 export default function homePage(auth) {
   spinner();
+
   kinopoisk.getMoviePopular().then((data) => {
     const arrFilms = data.items;
     renderHomePage(arrFilms, auth);
   });
-
 }
 
 function renderHomePage(data, auth) {
@@ -36,54 +37,63 @@ function renderHomePage(data, auth) {
         <div class="search-preview"></div>
       </div>
     </div>
+    <section class = "films__wrapper">
+      <h2>Фильтр</h2>
+      <div id = "filter__list"></div> 
+    </section>
+    <section class = "films__wrapper">
+      <h2>Популярные фильмы</h2>
       <div class="film-list"> 
         ${renderCardFilm(data)}
-    </div>
+      </div>
+    </section>
   `
   );
-  const form = document.querySelector('.search-form')
-  const {search} = form.elements;
+  renderFilter();
+  footer(auth);
+
+  const form = document.querySelector(".search-form");
+  const { search } = form.elements;
   const filmList = document.querySelector(".film-list");
-  const searchPreview = document.querySelector('.search-preview')
+  const searchPreview = document.querySelector(".search-preview");
 
-  form.elements.search.addEventListener('input', (e) => {
-
+  form.elements.search.addEventListener("input", (e) => {
     if (e.target.value.length !== 0) {
-      const previewSearch = searchFilm(e.target.value, data)
-      searchPreview.innerHTML = ''
-      searchPreview.classList.add('active')
+      const previewSearch = searchFilm(e.target.value, data);
+      searchPreview.innerHTML = "";
+      searchPreview.classList.add("active");
       if (previewSearch.length > 0) {
-        searchPreview.insertAdjacentHTML('beforeend', renderPreviews(previewSearch) )
+        searchPreview.insertAdjacentHTML(
+          "beforeend",
+          renderPreviews(previewSearch)
+        );
       } else {
-        searchPreview.insertAdjacentHTML('beforeend', renderNotFound(e.target.value) )
+        searchPreview.insertAdjacentHTML(
+          "beforeend",
+          renderNotFound(e.target.value)
+        );
       }
     } else {
-      searchPreview.classList.remove('active')
-      searchPreview.innerHTML = ''
+      searchPreview.classList.remove("active");
+      searchPreview.innerHTML = "";
     }
-
-  })
+  });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    filmList.innerHTML = ''
-    searchPreview.innerHTML = ''
-    searchPreview.classList.remove('active')
+    filmList.innerHTML = "";
+    searchPreview.innerHTML = "";
+    searchPreview.classList.remove("active");
     const films = searchFilm(search.value, data);
     filmList.insertAdjacentHTML("beforeend", renderCardFilm(films));
-
   });
 }
-
 
 function searchFilm(string, arr) {
   return arr.filter((item) => {
     return item.nameRu.toLowerCase().startsWith(string.toLowerCase());
   });
-
 }
-
-
 
 /**
  * Рендер превью и карточек
@@ -92,15 +102,40 @@ function searchFilm(string, arr) {
  * @returns {string|*[]}
  */
 function renderPreviews(films) {
-  return films.length !== 0 ?  String(films.map((item) => previewFilm(item))).replaceAll(',', '') : [];
+  return films.length !== 0
+    ? String(films.map((item) => previewFilm(item))).replaceAll(",", "")
+    : [];
 }
 function renderCardFilm(films) {
 
-  return films.length !== 0 ?  String(films.map((item) => cardFilm(item))).replaceAll(',', '') : [];
+  return films.length !== 0
+    ? String(films.map((item) => cardFilm(item))).replaceAll(",", "")
+    : [];
 }
 // Рендер не найдено
 function renderNotFound(query) {
-  return `<div class = "not-found">Извините, ничего не нашли по запросу:  <i>${query}</i></div>`
+  return `<div class = "not-found">Извините, ничего не нашли по запросу:  <i>${query}</i></div>`;
 }
 
-export {renderCardFilm}
+function renderFilter(id = null) {
+  const filtersContainer = document.querySelector("#filter__list");
+  filters().then((response) => {
+    if (response.genres.length !== 0) {
+      filtersContainer.innerHTML = "";
+      response.genres.forEach((element) => {
+        if (element.genre !== "") {
+          const filterItem = document.createElement("a");
+          filterItem.classList.add("filter__item");
+          filterItem.href = `/filterby/${element.id}`;
+          filterItem.innerHTML = element.genre;
+          if(id && Number(id) === element.id) {
+            filterItem.classList.add('active')
+          }
+          filtersContainer.append(filterItem);
+        }
+      });
+    }
+  });
+}
+
+export { renderCardFilm, renderFilter };

@@ -1,5 +1,5 @@
-import { app } from "../services/vars";
-import { exitProfileUser } from "./exitProfileUser";
+import {app} from "../services/vars";
+import {exitProfileUser} from "./exitProfileUser";
 import logo from "../../assets/logo.png";
 
 export function header(paste, auth) {
@@ -10,7 +10,9 @@ export function header(paste, auth) {
       <div class="interface">
         <nav>
           <a id="home-link" href="/">Главная</a>
-          <a id="movies-link" href="/movies">Фильмы</a>
+          <a href="/filterby/1">Триллеры</a>
+          <a href="/filterby/4">Мелодрама</a>
+          <a href="/filterby/31">Игра</a>
         </nav>      
       </div>
     </div>

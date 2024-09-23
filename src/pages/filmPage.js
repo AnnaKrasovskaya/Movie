@@ -3,6 +3,7 @@ import { header } from "../common/header";
 import { spinner, removeSpinner } from "../common/spinner.js";
 import "./filmPage.scss";
 import { similliarCard } from "../common/similiarCard.js";
+import { footer } from "../common/footer.js";
 
 export default function filmPage(auth) {
   const id = Number(window.location.pathname.split("/")[2]);
@@ -13,6 +14,7 @@ export default function filmPage(auth) {
       method: "GET",
       headers,
     });
+
     return await response.json();
   };
 
@@ -28,9 +30,9 @@ export default function filmPage(auth) {
     removeSpinner();
     header(true, auth);
     renderFilmPage(response);
-
     getFilmSimilars(id).then((result) => {
       renderSimilarFilms(result.items);
+      footer(auth);
     });
   });
 }
